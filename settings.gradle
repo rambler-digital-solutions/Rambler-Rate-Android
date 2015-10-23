@@ -1,1 +1,1 @@
-include ':rate'
+include ':rate', ':testapp'
