@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import ru.rambler.rate.Configuration;
 import ru.rambler.rate.RamblerRate;
+import ru.rambler.rate.Util;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Util.resetRamblerRate(this);
         Configuration configuration = Configuration.newInstance(this)
                 .setDelayDays(0).setTitle("Оцените приложение")
                 .setMessage("Если вы кайфуете от нашего приложения, поставьте ему пять звездочек ;)");

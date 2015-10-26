@@ -60,6 +60,10 @@ public class RamblerRate {
         return System.currentTimeMillis() > initTimestamp + MS_IN_DAY * instance.configuration.getDelayDays();
     }
 
+    static void reset(Context context) {
+        Prefs.newInstance(context).setInitTimestamp(0);
+    }
+
     private static Intent createIntent(Context context, Configuration configuration) {
         Intent intent = new Intent(context, RateActivity.class);
         intent.putExtra(RateActivity.ARG_CONFIG, configuration);

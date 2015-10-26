@@ -21,6 +21,7 @@ public class Configuration implements Serializable {
     private int labelCancelStringId = R.string.label_cancel;
     private int messageStringId;
     private String messageText;
+    private int iconId = android.R.drawable.sym_def_app_icon;
 
     private Configuration(Context context) {
         this.context = context;
@@ -138,5 +139,13 @@ public class Configuration implements Serializable {
     public Configuration setMessage(String messageText) {
         this.messageText = messageText;
         return this;
+    }
+
+    public int getIconId() {
+        return iconId;
+    }
+
+    public void setIconId(int iconId) {
+        this.iconId = iconId;
     }
 }
