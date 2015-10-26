@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
+import java.io.Serializable;
+
 public class RamblerRate {
 
     private static final long MS_IN_DAY = 1000 * 60 * 60 * 24;
@@ -103,9 +105,9 @@ public class RamblerRate {
         }
     }
 
-    public static class Configuration {
+    public static class Configuration implements Serializable {
 
-        private final Context context;
+        private final transient Context context;
         private int layout = R.layout.activity_rate;
         private int requestCode = 0x7205;
         private String titleText;
@@ -117,6 +119,8 @@ public class RamblerRate {
         private int labelLaterStringId = R.string.label_later;
         private String labelCancelText;
         private int labelCancelStringId = R.string.label_cancel;
+        private int messageStringId;
+        private String messageText;
 
         private Configuration(Context context) {
             this.context = context;
@@ -135,22 +139,13 @@ public class RamblerRate {
             return this;
         }
 
-        public Configuration setTitle(String title) {
-            this.titleText = title;
-            return this;
+        public int getDelayDays() {
+            return delayDays;
         }
 
         public Configuration setRequestCode(int requestCode) {
             this.requestCode = requestCode;
             return this;
-        }
-
-        public int getDelayDays() {
-            return delayDays;
-        }
-
-        public int getDelayOpens() {
-            return delayOpens;
         }
 
         public void setDelayOpens(int delayOpens) {
@@ -161,44 +156,48 @@ public class RamblerRate {
             return labelCancelText;
         }
 
-        public void setLabelCancelText(String labelCancelText) {
+        public Configuration setLabelCancel(String labelCancelText) {
             this.labelCancelText = labelCancelText;
+            return this;
+        }
+
+        public void setLabelLater(String labelLaterText) {
+            this.labelLaterText = labelLaterText;
         }
 
         public String getLabelLaterText() {
             return labelLaterText;
         }
 
-        public void setLabelLaterText(String labelLaterText) {
-            this.labelLaterText = labelLaterText;
+        public Configuration setLayout(int layout) {
+            this.layout = layout;
+            return this;
         }
 
         public int getLayout() {
             return layout;
         }
 
-        public void setLayout(int layout) {
-            this.layout = layout;
-        }
-
         public int getRequestCode() {
             return requestCode;
+        }
+
+        public Configuration setTitle(int titleStringId) {
+            this.titleStringId = titleStringId;
+            return this;
         }
 
         public int getTitleStringId() {
             return titleStringId;
         }
 
-        public void setTitleStringId(int titleStringId) {
-            this.titleStringId = titleStringId;
+        public Configuration setTitle(String titleText) {
+            this.titleText = titleText;
+            return this;
         }
 
         public String getTitleText() {
             return titleText;
-        }
-
-        public void setTitleText(String titleText) {
-            this.titleText = titleText;
         }
 
         Context getContext() {
@@ -209,16 +208,36 @@ public class RamblerRate {
             return labelLaterStringId;
         }
 
-        public void setLabelLaterStringId(int labelLaterStringId) {
+        public Configuration setLabelLater(int labelLaterStringId) {
             this.labelLaterStringId = labelLaterStringId;
+            return this;
         }
 
         public int getLabelCancelStringId() {
             return labelCancelStringId;
         }
 
-        public void setLabelCancelStringId(int labelCancelStringId) {
+        public Configuration setLabelCancel(int labelCancelStringId) {
             this.labelCancelStringId = labelCancelStringId;
+            return this;
+        }
+
+        public int getMessageStringId() {
+            return messageStringId;
+        }
+
+        public Configuration setMessage(int messageStringId) {
+            this.messageStringId = messageStringId;
+            return this;
+        }
+
+        public String getMessageText() {
+            return messageText;
+        }
+
+        public Configuration setMessage(String messageText) {
+            this.messageText = messageText;
+            return this;
         }
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/RateTheme.RootLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/white"
     android:orientation="vertical"
     tools:context="ru.rambler.rate.RateActivity">
 
@@ -13,39 +13,32 @@
 
         <View
             android:id="@+id/header"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#4d95f1" />
+            style="@style/RateTheme.Header" />
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:src="@android:drawable/sym_def_app_icon" />
+            style="@style/RateTheme.Icon" />
     </FrameLayout>
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="title" />
+        style="@style/RateTheme.Title"
+        tools:text="title" />
 
     <TextView
         android:id="@+id/message"
+        style="@style/RateTheme.Message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="what do you think about me?" />
+        tools:text="what do you think about me?" />
 
     <RatingBar
         android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        style="@style/RateTheme.Stars"
+        android:numStars="4"
+        android:stepSize="1" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#777" />
+    <View style="@style/RateTheme.Divider" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,16 +47,12 @@
 
         <Button
             android:id="@+id/btn_later"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/RateTheme.Button"
             android:text="Later" />
 
         <Button
             android:id="@+id/btn_cancel"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/RateTheme.Button"
             android:text="Cancel" />
     </LinearLayout>
 </LinearLayout>

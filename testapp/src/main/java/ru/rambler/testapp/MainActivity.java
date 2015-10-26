@@ -19,7 +19,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        RamblerRate.initialize(RamblerRate.Configuration.newInstance(this).setDelayDays(0));
+        RamblerRate.Configuration configuration = RamblerRate.Configuration.newInstance(this)
+                .setDelayDays(0).setTitle("Оцените приложение")
+                .setMessage("Если вы кайфуете от нашего приложения, поставьте ему пять звездочек ;)");
+
+        RamblerRate.initialize(configuration);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

@@ -11,6 +11,7 @@ public class RateActivity extends AppCompatActivity {
     static final int RESULT_CODE_RATED = 0x102;
     static final String EXTRA_STARS = "stars";
 
+    static String ARG_CONFIG = "configuration";
     static String ARG_LAYOUT = "layout";
     static String ARG_TITLE_TEXT = "title_text";
     static String ARG_TITLE_STRING_ID = "title_string_id";
@@ -26,8 +27,8 @@ public class RateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        int layoutId = getIntent().getIntExtra(ARG_LAYOUT, 0);
-        setContentView(layoutId);
+        RamblerRate.Configuration config = (RamblerRate.Configuration) getIntent().getSerializableExtra(ARG_CONFIG);
+        setContentView(config.getLayout());
 
         setupElementText(R.id.title, ARG_TITLE_TEXT, ARG_TITLE_STRING_ID);
         setupElementText(R.id.btn_later, ARG_LABEL_LATER_TEXT, ARG_LABEL_LATER_STRING_ID);
