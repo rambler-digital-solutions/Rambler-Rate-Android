@@ -1,5 +1,6 @@
 package ru.rambler.testapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +8,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import ru.rambler.rate.Configuration;
 import ru.rambler.rate.RamblerRate;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        RamblerRate.Configuration configuration = RamblerRate.Configuration.newInstance(this)
+        Configuration configuration = Configuration.newInstance(this)
                 .setDelayDays(0).setTitle("Оцените приложение")
                 .setMessage("Если вы кайфуете от нашего приложения, поставьте ему пять звездочек ;)");
 
@@ -30,6 +33,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 RamblerRate.startForResult(MainActivity.this);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        RamblerRate.onActivityResult(requestCode, resultCode, data, new RamblerRate.Callback() {
+            @Override
+            public void rated(float stars) {
+                Toast.makeText(MainActivity.this, "Stars: " + stars, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void delayed() {
+                Toast.makeText(MainActivity.this, "Delayed", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void canceled() {
+                Toast.makeText(MainActivity.this, "Canceled", Toast.LENGTH_SHORT).show();
             }
         });
     }

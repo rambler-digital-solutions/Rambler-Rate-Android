@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 import java.util.Calendar;
 
-public class Prefs {
+class Prefs {
     private static final String PREFS_FILE_NAME = "ru.rambler.rate";
     private static final String PREFS_INIT_TIMESTAMP = "init_timestamp";
 

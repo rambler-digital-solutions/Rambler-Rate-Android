@@ -45,12 +45,13 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="RateTheme.Stars">
+    <style name="RateTheme.Stars" parent="Widget.AppCompat.RatingBar">
+        <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:layout_marginLeft">16dp</item>
         <item name="android:layout_marginRight">16dp</item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:numStars">4</item>
+        <item name="android:numStars">5</item>
         <item name="android:stepSize">1</item>
     </style>
 

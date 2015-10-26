@@ -1,7 +1,10 @@
 package ru.rambler.rate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 public class RateActivity extends AppCompatActivity {
@@ -12,39 +15,79 @@ public class RateActivity extends AppCompatActivity {
     static final String EXTRA_STARS = "stars";
 
     static String ARG_CONFIG = "configuration";
-    static String ARG_LAYOUT = "layout";
-    static String ARG_TITLE_TEXT = "title_text";
-    static String ARG_TITLE_STRING_ID = "title_string_id";
-    static String ARG_MESSAGE_TEXT = "message_text";
-    static String ARG_MESSAGE_STRING_ID = "message_string_id";
-    static String ARG_LABEL_LATER_TEXT = "label_later_text";
-    static String ARG_LABEL_LATER_STRING_ID = "label_later_string_id";
-    static String ARG_LABEL_CANCEL_TEXT = "label_cancel_text";
-    static String ARG_LABEL_CANCEL_STRING_ID = "label_cancel_string_id";
-
+    private boolean isStarted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Configuration config = (Configuration) getIntent().getSerializableExtra(ARG_CONFIG);
 
-        RamblerRate.Configuration config = (RamblerRate.Configuration) getIntent().getSerializableExtra(ARG_CONFIG);
         setContentView(config.getLayout());
 
-        setupElementText(R.id.title, ARG_TITLE_TEXT, ARG_TITLE_STRING_ID);
-        setupElementText(R.id.btn_later, ARG_LABEL_LATER_TEXT, ARG_LABEL_LATER_STRING_ID);
-        setupElementText(R.id.btn_cancel, ARG_LABEL_CANCEL_TEXT, ARG_LABEL_CANCEL_STRING_ID);
-        setupElementText(R.id.btn_later, ARG_LABEL_LATER_TEXT, ARG_LABEL_LATER_STRING_ID);
+        findAndSetElementText(R.id.title, config.getTitleText(), config.getTitleStringId());
+        findAndSetElementText(R.id.message, config.getMessageText(), config.getMessageStringId());
+        findAndSetElementText(R.id.btn_later, config.getLabelLaterText(), config.getLabelLaterStringId())
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        setResult(RESULT_CODE_LATER);
+                        finish();
+                    }
+                });
+        findAndSetElementText(R.id.btn_cancel, config.getLabelCancelText(), config.getLabelCancelStringId())
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        setResult(RESULT_CODE_CANCEL);
+                        finish();
+                    }
+                });
+
+        RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                ratingBar.postDelayed(new ActionOnRate(rating), 300);
+            }
+        });
     }
 
-    private void setupElementText(int viewId, String intentArgText, String intentArgStringId) {
-        String text = getIntent().getStringExtra(intentArgText);
-        int resId = getIntent().getIntExtra(intentArgStringId, 0);
-
+    private View findAndSetElementText(int viewId, String text, int stringId) {
         TextView target = (TextView) findViewById(viewId);
-        if (resId > 0) {
-            target.setText(resId);
+        if (stringId > 0) {
+            target.setText(stringId);
         } else {
             target.setText(text);
         }
+        return target;
+    }
+
+    private class ActionOnRate implements Runnable {
+        private final float stars;
+
+        public ActionOnRate(float stars) {
+            this.stars = stars;
+        }
+
+        @Override
+        public void run() {
+            if (!isStarted) {
+                return;
+            }
+            setResult(RESULT_CODE_RATED, new Intent().putExtra(EXTRA_STARS, stars));
+            finish();
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        isStarted = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        isStarted = false;
     }
 }

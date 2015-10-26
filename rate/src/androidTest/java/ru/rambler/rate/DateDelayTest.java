@@ -41,19 +41,19 @@ public class DateDelayTest extends InstrumentationTestCase {
         Prefs prefs = Prefs.newInstance(getInstrumentation().getContext());
 
         prefs.setInitTimestamp(0);//simulate first call
-        RamblerRate.initialize(RamblerRate.Configuration.newInstance(getInstrumentation().getContext()).setDelayDays(1));
+        RamblerRate.initialize(Configuration.newInstance(getInstrumentation().getContext()).setDelayDays(1));
         Assert.assertFalse(RamblerRate.canShow(getInstrumentation().getContext()));
 
         prefs.setInitTimestamp(0);//simulate first call
-        RamblerRate.initialize(RamblerRate.Configuration.newInstance(getInstrumentation().getContext()).setDelayDays(0));
+        RamblerRate.initialize(Configuration.newInstance(getInstrumentation().getContext()).setDelayDays(0));
         Assert.assertTrue(RamblerRate.canShow(getInstrumentation().getContext()));
 
         prefs.setInitTimestamp(Utils.eraseTime(System.currentTimeMillis() - MS_IN_DAY));//simulate first call yesterday
-        RamblerRate.initialize(RamblerRate.Configuration.newInstance(getInstrumentation().getContext()).setDelayDays(1));
+        RamblerRate.initialize(Configuration.newInstance(getInstrumentation().getContext()).setDelayDays(1));
         Assert.assertTrue(RamblerRate.canShow(getInstrumentation().getContext()));
 
         prefs.setInitTimestamp(Utils.eraseTime(System.currentTimeMillis() - MS_IN_DAY));//simulate first call yesterday
-        RamblerRate.initialize(RamblerRate.Configuration.newInstance(getInstrumentation().getContext()).setDelayDays(2));
+        RamblerRate.initialize(Configuration.newInstance(getInstrumentation().getContext()).setDelayDays(2));
         Assert.assertFalse(RamblerRate.canShow(getInstrumentation().getContext()));
     }
 }
