@@ -48,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void delayed() {
+            public void remindLater() {
                 Toast.makeText(MainActivity.this, "Delayed", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void canceled() {
+            public void cancel() {
                 Toast.makeText(MainActivity.this, "Canceled", Toast.LENGTH_SHORT).show();
             }
         });

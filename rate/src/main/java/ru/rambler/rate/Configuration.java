@@ -144,7 +144,8 @@ public class Configuration implements Serializable {
         return iconId;
     }
 
-    public void setIconId(int iconId) {
+    public Configuration setIconId(int iconId) {
         this.iconId = iconId;
+        return this;
     }
 }

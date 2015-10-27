@@ -18,9 +18,9 @@ public class RamblerRate {
     public interface Callback {
         void rated(float stars);
 
-        void delayed();
+        void remindLater();
 
-        void canceled();
+        void cancel();
     }
 
     private RamblerRate(Configuration configuration) {
@@ -79,10 +79,10 @@ public class RamblerRate {
 
         if (resultCode == RateActivity.RESULT_CODE_LATER) {
             Prefs.newInstance(instance.configuration.getContext()).setInitTimestamp(Utils.eraseTime(System.currentTimeMillis()));
-            callback.delayed();
+            callback.remindLater();
         } else if (resultCode == RateActivity.RESULT_CODE_CANCEL) {
             Prefs.newInstance(instance.configuration.getContext()).setInitTimestamp(TIMESTAMP_NOT_REMIND_MORE);
-            callback.canceled();
+            callback.cancel();
         } else if (resultCode == RateActivity.RESULT_CODE_RATED) {
             Prefs.newInstance(instance.configuration.getContext()).setInitTimestamp(TIMESTAMP_NOT_REMIND_MORE);
             float stars = data.getFloatExtra(RateActivity.EXTRA_STARS, 0);

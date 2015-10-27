@@ -46,14 +46,14 @@
         android:gravity="right">
 
         <Button
-            android:id="@+id/btn_later"
-            style="@style/RateTheme.Button"
-            android:layout_marginRight="8dp"
-            android:text="Later" />
-
-        <Button
             android:id="@+id/btn_cancel"
             style="@style/RateTheme.Button"
-            android:text="Cancel" />
+            android:layout_marginRight="8dp"
+            tools:text="Cancel" />
+
+        <Button
+            android:id="@+id/btn_later"
+            style="@style/RateTheme.Button"
+            tools:text="Later" />
     </LinearLayout>
 </LinearLayout>
