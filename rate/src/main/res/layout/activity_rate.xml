@@ -39,6 +39,8 @@
     <View style="@style/RateTheme.Divider" />
 
     <LinearLayout
+        android:id="@+id/action_area"
+        style="@style/RateTheme.ActionArea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right">
@@ -46,6 +48,7 @@
         <Button
             android:id="@+id/btn_later"
             style="@style/RateTheme.Button"
+            android:layout_marginRight="8dp"
             android:text="Later" />
 
         <Button
