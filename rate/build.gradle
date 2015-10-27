@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 23
@@ -7,13 +8,45 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 101
+        versionName "0.1.1"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    libraryVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFile = new File(
+                    output.outputFile.parent,
+                    output.outputFile.name.replace(".aar", "-${defaultConfig.versionName}.aar"))
+        }
+    }
+}
+
+publishing {
+    publications {
+        android.libraryVariants.all { variant ->
+            def buildType = variant.buildType.name
+            def versionName = android.defaultConfig.versionName
+            create("rate-$buildType", MavenPublication) {
+                artifact("$buildDir/outputs/aar/rate-$buildType-$versionName" + ".aar")
+                artifactId "rate-$buildType"
+                groupId 'ru.rambler.android'
+                version android.defaultConfig.versionName
+            }
+        }
+    }
+    repositories {
+        maven {
+            url "http://jenkins01.mobile.rambler.ru:7700/nexus/content/repositories/rambler-internal/"
+            credentials {
+                username "gradle"
+                password = "gradle"
+            }
         }
     }
 }
