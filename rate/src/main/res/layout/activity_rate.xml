@@ -34,7 +34,7 @@
 
     <RatingBar
         android:id="@+id/ratingBar"
-        style="@style/RateTheme.Stars"/>
+        style="@style/RateTheme.Stars" />
 
     <View style="@style/RateTheme.Divider" />
 

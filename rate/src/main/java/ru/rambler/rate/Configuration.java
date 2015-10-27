@@ -12,8 +12,7 @@ public class Configuration implements Serializable {
     private int requestCode = 0x7205;
     private String titleText;
     private int titleStringId;
-    private int delayDays = 7;
-    private int delayOpens = RamblerRate.DELAY_INFINITE;
+    private int daysNotShow = 7;
 
     private String labelLaterText;
     private int labelLaterStringId = R.string.label_later;
@@ -35,35 +34,34 @@ public class Configuration implements Serializable {
         return new Configuration(context);
     }
 
-    public Configuration setDelayDays(int days) {
-        this.delayDays = days;
+    /**
+     * set count of days while dialog shouldn't be shown
+     */
+    public Configuration setDaysNotShow(int days) {
+        this.daysNotShow = days;
         return this;
     }
 
-    public int getDelayDays() {
-        return delayDays;
-    }
-
-    public Configuration setRequestCode(int requestCode) {
-        this.requestCode = requestCode;
-        return this;
-    }
-
-    public void setDelayOpens(int delayOpens) {
-        this.delayOpens = delayOpens;
+    public int getDaysNotShow() {
+        return daysNotShow;
     }
 
     public String getLabelCancelText() {
         return labelCancelText;
     }
 
-    public Configuration setLabelCancel(String labelCancelText) {
-        this.labelCancelText = labelCancelText;
+    public int getLabelCancelStringId() {
+        return labelCancelStringId;
+    }
+
+    public Configuration setLabelCancel(int labelCancelStringId) {
+        this.labelCancelStringId = labelCancelStringId;
         return this;
     }
 
-    public void setLabelLater(String labelLaterText) {
-        this.labelLaterText = labelLaterText;
+    public Configuration setLabelCancel(String labelCancelText) {
+        this.labelCancelText = labelCancelText;
+        return this;
     }
 
     public String getLabelLaterText() {
@@ -77,6 +75,11 @@ public class Configuration implements Serializable {
 
     public int getLayout() {
         return layout;
+    }
+
+    public Configuration setRequestCode(int requestCode) {
+        this.requestCode = requestCode;
+        return this;
     }
 
     public int getRequestCode() {
@@ -109,22 +112,14 @@ public class Configuration implements Serializable {
         return labelLaterStringId;
     }
 
+    public Configuration setLabelLater(String labelLaterText) {
+        this.labelLaterText = labelLaterText;
+        return this;
+    }
+
     public Configuration setLabelLater(int labelLaterStringId) {
         this.labelLaterStringId = labelLaterStringId;
         return this;
-    }
-
-    public int getLabelCancelStringId() {
-        return labelCancelStringId;
-    }
-
-    public Configuration setLabelCancel(int labelCancelStringId) {
-        this.labelCancelStringId = labelCancelStringId;
-        return this;
-    }
-
-    public int getMessageStringId() {
-        return messageStringId;
     }
 
     public Configuration setMessage(int messageStringId) {
@@ -132,13 +127,17 @@ public class Configuration implements Serializable {
         return this;
     }
 
-    public String getMessageText() {
-        return messageText;
-    }
-
     public Configuration setMessage(String messageText) {
         this.messageText = messageText;
         return this;
+    }
+
+    public int getMessageStringId() {
+        return messageStringId;
+    }
+
+    public String getMessageText() {
+        return messageText;
     }
 
     public int getIconId() {

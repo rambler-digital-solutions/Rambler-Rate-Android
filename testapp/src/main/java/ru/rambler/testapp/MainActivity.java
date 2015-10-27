@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         Util.resetRamblerRate(this);
         Configuration configuration = Configuration.newInstance(this)
-                .setDelayDays(0).setTitle("Оцените приложение")
+                .setDaysNotShow(0).setTitle("Оцените приложение")
                 .setMessage("Если вы кайфуете от нашего приложения, поставьте ему пять звездочек ;)");
 
         RamblerRate.initialize(configuration);

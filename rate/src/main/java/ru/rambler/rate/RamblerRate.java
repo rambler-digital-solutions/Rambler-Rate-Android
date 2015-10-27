@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 public class RamblerRate {
 
     private static final long MS_IN_DAY = 1000 * 60 * 60 * 24;
-    public static final int DELAY_INFINITE = -1;
     private static final int TIMESTAMP_NOT_REMIND_MORE = -1;
 
     private static RamblerRate instance;
@@ -31,7 +30,6 @@ public class RamblerRate {
     public static void initialize(Configuration configuration) {
         instance = new RamblerRate(configuration);
     }
-
 
     public static void startForResult(Activity activity) {
         checkInstance();
@@ -57,7 +55,7 @@ public class RamblerRate {
             return false;
         }
 
-        return System.currentTimeMillis() > initTimestamp + MS_IN_DAY * instance.configuration.getDelayDays();
+        return System.currentTimeMillis() > initTimestamp + MS_IN_DAY * instance.configuration.getDaysNotShow();
     }
 
     static void reset(Context context) {
@@ -99,5 +97,4 @@ public class RamblerRate {
             throw new IllegalStateException("The method 'initialize' must be called before");
         }
     }
-
 }
