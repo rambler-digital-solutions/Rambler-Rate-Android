@@ -81,7 +81,7 @@ public class RamblerRate {
             return false;
         }
 
-        if (resultCode == RateActivity.RESULT_CODE_LATER) {
+        if (resultCode == RateActivity.RESULT_CODE_LATER || requestCode == Activity.RESULT_CANCELED) {
             Prefs.newInstance(instance.configuration.getContext()).setInitTimestamp(Utils.eraseTime(System.currentTimeMillis()));
             callback.remindLater();
         } else if (resultCode == RateActivity.RESULT_CODE_CANCEL) {
