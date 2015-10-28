@@ -45,7 +45,7 @@
     <style name="RateTheme.Message">
         <item name="android:layout_marginLeft">@dimen/rate_content_horizontal_padding</item>
         <item name="android:layout_marginRight">@dimen/rate_content_horizontal_padding</item>
-        <item name="android:layout_marginBottom">@dimen/rate_content_vertical_padding</item>
+        <item name="android:layout_marginBottom">10dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">14sp</item>
@@ -54,7 +54,7 @@
 
     <style name="RateTheme.RatingBar" parent="Widget.AppCompat.RatingBar">
         <item name="android:layout_gravity">center_horizontal</item>
-        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:layout_marginBottom">14dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:numStars">5</item>
