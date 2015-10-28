@@ -3,11 +3,10 @@ package ru.rambler.rate;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import java.util.Calendar;
-
 class Prefs {
     private static final String PREFS_FILE_NAME = "ru.rambler.rate";
     private static final String PREFS_INIT_TIMESTAMP = "init_timestamp";
+    private static final String PREFS_CANCELED_TIMESTAMP = "canceled_timestamp";
 
     private final SharedPreferences sharedPreferences;
 
@@ -25,5 +24,9 @@ class Prefs {
 
     public void setInitTimestamp(long timestamp) {
         sharedPreferences.edit().putLong(PREFS_INIT_TIMESTAMP, timestamp).apply();
+    }
+
+    public void setCancelTimestamp(long timestamp) {
+        sharedPreferences.edit().putLong(PREFS_CANCELED_TIMESTAMP, timestamp).apply();
     }
 }

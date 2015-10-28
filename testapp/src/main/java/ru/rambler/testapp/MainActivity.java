@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         RamblerRate.onActivityResult(requestCode, resultCode, data, new RamblerRate.Callback() {
             @Override
-            public void rated(float stars) {
+            public void rate(float stars) {
                 Toast.makeText(MainActivity.this, "Stars: " + stars, Toast.LENGTH_SHORT).show();
             }
 

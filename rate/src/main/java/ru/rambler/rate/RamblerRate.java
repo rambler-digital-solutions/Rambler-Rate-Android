@@ -2,6 +2,7 @@ package ru.rambler.rate;
 
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
@@ -16,7 +17,7 @@ public class RamblerRate {
 
 
     public interface Callback {
-        void rated(float stars);
+        void rate(float stars);
 
         void remindLater();
 
@@ -27,6 +28,9 @@ public class RamblerRate {
         this.configuration = configuration;
     }
 
+    /**
+     * should be called inside {@link Application#onCreate()}
+     */
     public static void initialize(Configuration configuration) {
         instance = new RamblerRate(configuration);
     }
@@ -81,12 +85,14 @@ public class RamblerRate {
             Prefs.newInstance(instance.configuration.getContext()).setInitTimestamp(Utils.eraseTime(System.currentTimeMillis()));
             callback.remindLater();
         } else if (resultCode == RateActivity.RESULT_CODE_CANCEL) {
-            Prefs.newInstance(instance.configuration.getContext()).setInitTimestamp(TIMESTAMP_NOT_REMIND_MORE);
+            Prefs prefs = Prefs.newInstance(instance.configuration.getContext());
+            prefs.setInitTimestamp(TIMESTAMP_NOT_REMIND_MORE);
+            prefs.setCancelTimestamp(Utils.eraseTime(System.currentTimeMillis()));
             callback.cancel();
         } else if (resultCode == RateActivity.RESULT_CODE_RATED) {
             Prefs.newInstance(instance.configuration.getContext()).setInitTimestamp(TIMESTAMP_NOT_REMIND_MORE);
             float stars = data.getFloatExtra(RateActivity.EXTRA_STARS, 0);
-            callback.rated(stars);
+            callback.rate(stars);
         }
 
         return true;
