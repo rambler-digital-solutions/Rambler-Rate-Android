@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="ratingRootStyle" format="reference" />
+    <attr name="ratingHeaderStyle" format="reference" />
+    <attr name="ratingIconStyle" format="reference" />
+    <attr name="ratingTitleStyle" format="reference"/>
+    <attr name="ratingMessageStyle" format="reference"/>
+    <attr name="ratingRatingBarStyle" format="reference"/>
+    <attr name="ratingDividerStyle" format="reference"/>
+    <attr name="ratingActionAreaStyle" format="reference"/>
+    <attr name="ratingActionButtonStyle" format="reference"/>
+</resources>

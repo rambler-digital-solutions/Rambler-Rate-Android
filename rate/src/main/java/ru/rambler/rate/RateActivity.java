@@ -23,6 +23,7 @@ public class RateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Configuration config = (Configuration) getIntent().getSerializableExtra(ARG_CONFIG);
 
+        setTheme(config.getTheme());
         setContentView(config.getLayout());
 
         findAndSetElementText(R.id.title, config.getTitleText(), config.getTitleStringId());

@@ -1,59 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/RateTheme.RootLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     tools:context="ru.rambler.rate.RateActivity">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <View
-            android:id="@+id/header"
-            style="@style/RateTheme.Header" />
-
-        <ImageView
-            android:id="@+id/icon"
-            style="@style/RateTheme.Icon" />
-    </FrameLayout>
-
-    <TextView
-        android:id="@+id/title"
-        style="@style/RateTheme.Title"
-        tools:text="title" />
-
-    <TextView
-        android:id="@+id/message"
-        style="@style/RateTheme.Message"
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        style="?ratingRootStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="what do you think about me?" />
+        android:orientation="vertical">
 
-    <RatingBar
-        android:id="@+id/ratingBar"
-        style="@style/RateTheme.Stars" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <View style="@style/RateTheme.Divider" />
+            <View
+                android:id="@+id/header"
+                style="?ratingHeaderStyle" />
 
-    <LinearLayout
-        android:id="@+id/action_area"
-        style="@style/RateTheme.ActionArea"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right">
+            <ImageView
+                android:id="@+id/icon"
+                style="?ratingIconStyle" />
+        </FrameLayout>
 
-        <Button
-            android:id="@+id/btn_cancel"
-            style="@style/RateTheme.Button"
-            android:layout_marginRight="8dp"
-            tools:text="Cancel" />
+        <TextView
+            android:id="@+id/title"
+            style="?ratingTitleStyle"
+            tools:text="title" />
 
-        <Button
-            android:id="@+id/btn_later"
-            style="@style/RateTheme.Button"
-            tools:text="Later" />
+        <TextView
+            android:id="@+id/message"
+            style="?ratingMessageStyle"
+            tools:text="what do you think about me?" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?ratingRatingBarStyle" />
+
+        <View style="?ratingDividerStyle" />
+
+        <LinearLayout
+            android:id="@+id/action_area"
+            style="?ratingActionAreaStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right">
+
+            <Button
+                android:id="@+id/btn_cancel"
+                style="?ratingActionButtonStyle"
+                android:layout_marginRight="8dp"
+                tools:text="Cancel" />
+
+            <Button
+                android:id="@+id/btn_later"
+                style="?ratingActionButtonStyle"
+                tools:text="Later" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

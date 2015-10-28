@@ -18,8 +18,16 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <!--<style name="RateTheme.Header">-->
-        <!--<item name="android:background">#f00</item>-->
-        <!--<item name="android:layout_width">match_parent</item>-->
-        <!--<item name="android:layout_height">50dp</item>-->
+    <!--<item name="android:background">#f00</item>-->
+    <!--<item name="android:layout_width">match_parent</item>-->
+    <!--<item name="android:layout_height">50dp</item>-->
     <!--</style>-->
+
+    <style name="CustomRateTheme" parent="RateTheme">
+        <item name="ratingHeaderStyle">@style/CustomRateTheme.Header</item>
+    </style>
+
+    <style name="CustomRateTheme.Header" parent="RateTheme.Header">
+        <item name="android:background">#f00</item>
+    </style>
 </resources>

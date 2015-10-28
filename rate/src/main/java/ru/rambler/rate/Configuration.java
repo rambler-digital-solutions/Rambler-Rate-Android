@@ -9,6 +9,7 @@ public class Configuration implements Serializable {
 
     private final transient Context context;
     private int layout = R.layout.activity_rate;
+    private int theme = R.style.RateTheme;
     private int requestCode = 0x7205;
     private String titleText;
     private int titleStringId;
@@ -146,6 +147,15 @@ public class Configuration implements Serializable {
 
     public Configuration setIconId(int iconId) {
         this.iconId = iconId;
+        return this;
+    }
+
+    public int getTheme() {
+        return theme;
+    }
+
+    public Configuration setTheme(int theme) {
+        this.theme = theme;
         return this;
     }
 }
