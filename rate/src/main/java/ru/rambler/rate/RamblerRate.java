@@ -35,22 +35,30 @@ public class RamblerRate {
         instance = new RamblerRate(configuration);
     }
 
-    public static void startForResult(Activity activity) {
+    /**
+     * @return false, if dialog wouldn't be shown
+     */
+    public static boolean startForResult(Activity activity) {
         checkInstance();
         if (!canShow(activity)) {
-            return;
+            return false;
         }
         Intent intent = createIntent(activity, instance.configuration);
         activity.startActivityForResult(intent, instance.configuration.getRequestCode());
+        return true;
     }
 
-    public static void startForResult(Fragment fragment) {
+    /**
+     * @return false, if dialog wouldn't be shown
+     */
+    public static boolean startForResult(Fragment fragment) {
         checkInstance();
         if (!canShow(fragment.getContext())) {
-            return;
+            return false;
         }
         Intent intent = createIntent(fragment.getContext(), instance.configuration);
         fragment.startActivityForResult(intent, instance.configuration.getRequestCode());
+        return true;
     }
 
     static boolean canShow(Context context) {
