@@ -10,9 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import ru.rambler.rate.Configuration;
-import ru.rambler.rate.RamblerRate;
-import ru.rambler.rate.Util;
+import ru.rambler.libs.rate.Configuration;
+import ru.rambler.libs.rate.RamblerRate;
+import ru.rambler.libs.rate.Util;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,8 +1,10 @@
-package ru.rambler.rate;
+package ru.rambler.libs.rate;
 
 import android.content.Context;
 
 import java.io.Serializable;
+
+import ru.rambler.rate.R;
 
 
 public class Configuration implements Serializable {

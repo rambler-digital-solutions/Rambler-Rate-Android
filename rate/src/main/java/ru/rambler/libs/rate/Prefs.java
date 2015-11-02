@@ -1,4 +1,4 @@
-package ru.rambler.rate;
+package ru.rambler.libs.rate;
 
 import android.content.Context;
 import android.content.SharedPreferences;

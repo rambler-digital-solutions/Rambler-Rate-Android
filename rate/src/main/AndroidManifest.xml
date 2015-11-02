@@ -7,7 +7,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name">
         <activity
-            android:name=".RateActivity"
+            android:name="ru.rambler.libs.rate.RateActivity"
             android:theme="@style/RateTheme" />
     </application>
 

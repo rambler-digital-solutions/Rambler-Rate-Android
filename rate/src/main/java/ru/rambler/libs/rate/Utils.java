@@ -1,4 +1,4 @@
-package ru.rambler.rate;
+package ru.rambler.libs.rate;
 
 import java.util.Calendar;
 

@@ -1,4 +1,4 @@
-package ru.rambler.rate;
+package ru.rambler.libs.rate;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,4 +1,4 @@
-package ru.rambler.rate;
+package ru.rambler.libs.rate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import ru.rambler.rate.R;
 
 public class RateActivity extends AppCompatActivity {
 

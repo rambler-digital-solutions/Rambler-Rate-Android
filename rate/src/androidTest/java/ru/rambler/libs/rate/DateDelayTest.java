@@ -1,10 +1,15 @@
-package ru.rambler.rate;
+package ru.rambler.libs.rate;
 
 import android.test.InstrumentationTestCase;
 
 import junit.framework.Assert;
 
 import java.util.Date;
+
+import ru.rambler.libs.rate.Configuration;
+import ru.rambler.libs.rate.Prefs;
+import ru.rambler.libs.rate.RamblerRate;
+import ru.rambler.libs.rate.Utils;
 
 public class DateDelayTest extends InstrumentationTestCase {
 
