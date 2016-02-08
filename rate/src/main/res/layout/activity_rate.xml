@@ -12,6 +12,7 @@
         android:orientation="vertical">
 
         <FrameLayout
+            style="?ratingHeaderContainerStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

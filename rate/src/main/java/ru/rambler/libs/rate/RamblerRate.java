@@ -90,7 +90,8 @@ public class RamblerRate {
         }
 
         if (resultCode == RateActivity.RESULT_CODE_LATER || resultCode == Activity.RESULT_CANCELED) {
-            Prefs.newInstance(instance.configuration.getContext()).setInitTimestamp(Utils.eraseTime(System.currentTimeMillis()));
+            Prefs.newInstance(instance.configuration.getContext())
+                    .setInitTimestamp(Utils.eraseTime(System.currentTimeMillis()) + instance.configuration.getRemindAfterDays() - instance.configuration.getDaysNotShow());
             callback.remindLater();
         } else if (resultCode == RateActivity.RESULT_CODE_CANCEL) {
             Prefs prefs = Prefs.newInstance(instance.configuration.getContext());

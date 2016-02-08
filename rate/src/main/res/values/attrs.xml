@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="ratingRootStyle" format="reference" />
+    <attr name="ratingHeaderContainerStyle" format="reference" />
     <attr name="ratingHeaderStyle" format="reference" />
     <attr name="ratingIconStyle" format="reference" />
     <attr name="ratingTitleStyle" format="reference"/>

@@ -16,6 +16,7 @@ public class Configuration implements Serializable {
     private String titleText;
     private int titleStringId;
     private int daysNotShow = 7;
+    private int remindAfterDays = daysNotShow;
 
     private String labelLaterText;
     private int labelLaterStringId = R.string.label_later;
@@ -47,6 +48,18 @@ public class Configuration implements Serializable {
 
     public int getDaysNotShow() {
         return daysNotShow;
+    }
+
+    /**
+     * remind user for rate after 'remind late' button clicked
+     */
+    public Configuration setRemindAfterDays(int days) {
+        this.remindAfterDays = days;
+        return this;
+    }
+
+    public int getRemindAfterDays() {
+        return remindAfterDays;
     }
 
     public String getLabelCancelText() {

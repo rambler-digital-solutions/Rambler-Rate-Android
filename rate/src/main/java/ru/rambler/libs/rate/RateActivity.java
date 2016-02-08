@@ -52,7 +52,7 @@ public class RateActivity extends AppCompatActivity {
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                ratingBar.postDelayed(new ActionOnRate(rating), 300);
+                ratingBar.postDelayed(new ActionOnRate(rating), 100);
             }
         });
     }

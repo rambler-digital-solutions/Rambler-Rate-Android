@@ -1,5 +1,6 @@
 package ru.rambler.libs.rate;
 
+import android.test.AndroidTestCase;
 import android.test.InstrumentationTestCase;
 
 import junit.framework.Assert;
@@ -11,12 +12,12 @@ import ru.rambler.libs.rate.Prefs;
 import ru.rambler.libs.rate.RamblerRate;
 import ru.rambler.libs.rate.Utils;
 
-public class DateDelayTest extends InstrumentationTestCase {
+public class DateDelayTest extends AndroidTestCase {
 
     private static final long MS_IN_DAY = 1000 * 60 * 60 * 24;
 
     public void testPrefs() {
-        Prefs prefs = Prefs.newInstance(getInstrumentation().getContext());
+        Prefs prefs = Prefs.newInstance(getContext());
         long timestamp = prefs.getInitTimestamp();
         Assert.assertTrue(timestamp >= -1);
 
@@ -43,22 +44,22 @@ public class DateDelayTest extends InstrumentationTestCase {
     }
 
     public void testDelay() {
-        Prefs prefs = Prefs.newInstance(getInstrumentation().getContext());
+        Prefs prefs = Prefs.newInstance(getContext());
 
         prefs.setInitTimestamp(0);//simulate first call
-        RamblerRate.initialize(Configuration.newInstance(getInstrumentation().getContext()).setDaysNotShow(1));
-        Assert.assertFalse(RamblerRate.canShow(getInstrumentation().getContext()));
+        RamblerRate.initialize(Configuration.newInstance(getContext()).setDaysNotShow(1));
+        Assert.assertFalse(RamblerRate.canShow(getContext()));
 
         prefs.setInitTimestamp(0);//simulate first call
-        RamblerRate.initialize(Configuration.newInstance(getInstrumentation().getContext()).setDaysNotShow(0));
-        Assert.assertTrue(RamblerRate.canShow(getInstrumentation().getContext()));
+        RamblerRate.initialize(Configuration.newInstance(getContext()).setDaysNotShow(0));
+        Assert.assertTrue(RamblerRate.canShow(getContext()));
 
         prefs.setInitTimestamp(Utils.eraseTime(System.currentTimeMillis() - MS_IN_DAY));//simulate first call yesterday
-        RamblerRate.initialize(Configuration.newInstance(getInstrumentation().getContext()).setDaysNotShow(1));
-        Assert.assertTrue(RamblerRate.canShow(getInstrumentation().getContext()));
+        RamblerRate.initialize(Configuration.newInstance(getContext()).setDaysNotShow(1));
+        Assert.assertTrue(RamblerRate.canShow(getContext()));
 
         prefs.setInitTimestamp(Utils.eraseTime(System.currentTimeMillis() - MS_IN_DAY));//simulate first call yesterday
-        RamblerRate.initialize(Configuration.newInstance(getInstrumentation().getContext()).setDaysNotShow(2));
-        Assert.assertFalse(RamblerRate.canShow(getInstrumentation().getContext()));
+        RamblerRate.initialize(Configuration.newInstance(getContext()).setDaysNotShow(2));
+        Assert.assertFalse(RamblerRate.canShow(getContext()));
     }
 }
